@@ -11,8 +11,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
-    public static final int V_WIDTH = 800;
-    public static final int V_HEIGHT = 500;
+    public static final int V_WIDTH = 1600;
+    public static final int V_HEIGHT = 960;
     public SpriteBatch batch;
     //Texture img;
 
