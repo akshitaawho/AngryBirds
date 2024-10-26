@@ -1,0 +1,24 @@
+AKSHITAA SAHOO AMARENDRA SAHOO.pdf
+AP MIDSEM.pdf
+WhatsApp Image 2024-10-24 at 19.43.07_c941eb13.jpg
+birdandpig.png
+birdset.png
+bluebird.png
+blurlevel2.tsx
+jaitrikaset.png
+jaitrikaset.tsx
+jdskjfd.zip
+level1.tmx
+level1bg.jpg
+level2bg.jpg
+level2bg.tsx
+libgdx.png
+nobgslingshot.png
+nobgslingshot.tsx
+redbird.png
+set.png
+slingshot.tsx
+tiledab.tiled-project
+tiledab.tiled-session
+wood.png
+wood.tsx

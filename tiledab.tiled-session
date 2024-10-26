@@ -1,0 +1,110 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "nobgslingshot.tsx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "blurlevel2.tsx": {
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
+        },
+        "blurrlevel2.tsx": {
+            "scaleInDock": 0.03,
+            "scaleInEditor": 1
+        },
+        "fblur.tsx": {
+            "scaleInEditor": 1
+        },
+        "finalblur.tsx": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "finalerblur.tsx": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "finalestblur.tsx": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 0.125
+        },
+        "jaitrikaset.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 0.75
+        },
+        "level1.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 765.1515151515151,
+                "y": 695.4545454545455
+            }
+        },
+        "level1blur.tsx": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "level2bg.tsx": {
+            "scaleInDock": 0.125,
+            "scaleInEditor": 0.25
+        },
+        "nobgslingshot.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "slingshot.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "wood.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/dell/Desktop",
+    "map.height": 60,
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": "3",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 100,
+    "openFiles": [
+        "level1.tmx",
+        "jaitrikaset.tsx",
+        "level2bg.tsx",
+        "slingshot.tsx",
+        "nobgslingshot.tsx",
+        "nobgslingshot.tsx",
+        "nobgslingshot.tsx",
+        "wood.tsx",
+        "wood.tsx"
+    ],
+    "project": "tiledab.tiled-project",
+    "recentFiles": [
+        "wood.tsx",
+        "nobgslingshot.tsx",
+        "slingshot.tsx",
+        "level2bg.tsx",
+        "jaitrikaset.tsx",
+        "level1blur.tsx",
+        "finalblur.tsx",
+        "finalerblur.tsx",
+        "finalestblur.tsx",
+        "fblur.tsx",
+        "blurlevel2.tsx",
+        "blurrlevel2.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 1,
+    "tileset.spacing": 5,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    },
+    "tileset.transparentColor": "#000000",
+    "tileset.useTransparentColor": true
+}
