@@ -44,24 +44,33 @@ public class PauseScreen implements Screen {
         batch.begin();
         batch.draw(pauseBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        // Draw Replay button with hover effect
-        drawButton(replayBounds, replayButton, replayHoverButton, () -> game.setScreen(new LevelGameScreen(game, "levelgame.jpg")));
+        // Draw buttons with hover effect and actions
+        drawButton(replayBounds, replayButton, replayHoverButton, () -> {
+            game.buttonClickSound.play();
+            game.setScreen(new LevelGameScreen(game, "levelgame.jpg")); // Transition to LevelGameScreen
+        });
 
-        // Draw Play button with hover effect
-        drawButton(playBounds, playButton, playHoverButton, () -> game.setScreen(new LevelGameScreen(game, "levelgame.jpg")));
+        drawButton(playBounds, playButton, playHoverButton, () -> {
+            game.buttonClickSound.play();
+            game.setScreen(new LevelGameScreen(game, "levelgame.jpg")); // Transition to LevelGameScreen
+        });
 
-        // Draw Menu button with hover effect
-        drawButton(menuBounds, menuButton, menuHoverButton, () -> game.setScreen(new LevelsScreen(game)));
+        drawButton(menuBounds, menuButton, menuHoverButton, () -> {
+            game.buttonClickSound.play();
+            game.setScreen(new LevelsScreen(game)); // Transition to LevelsScreen
+        });
 
         batch.end();
     }
 
     private void drawButton(Rectangle bounds, Texture buttonTexture, Texture hoverTexture, Runnable action) {
-        if (bounds.contains(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY())) {
+        boolean isHovered = bounds.contains(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY());
+
+        // Draw the button with hover effect
+        if (isHovered) {
             batch.draw(hoverTexture, bounds.x - 2, bounds.y - 2, bounds.width + 4, bounds.height + 4);
             if (Gdx.input.justTouched()) {
-                game.buttonClickSound.play();
-                action.run();
+                action.run(); // Execute the action if button is clicked
             }
         } else {
             batch.draw(buttonTexture, bounds.x, bounds.y, bounds.width, bounds.height);
@@ -79,9 +88,14 @@ public class PauseScreen implements Screen {
         menuHoverButton.dispose();
     }
 
-    @Override public void show() {}
-    @Override public void resize(int width, int height) {}
-    @Override public void pause() {}
-    @Override public void resume() {}
-    @Override public void hide() {}
+    @Override
+    public void show() {}
+    @Override
+    public void resize(int width, int height) {}
+    @Override
+    public void pause() {}
+    @Override
+    public void resume() {}
+    @Override
+    public void hide() {}
 }
