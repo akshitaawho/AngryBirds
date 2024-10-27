@@ -72,8 +72,8 @@ public class SettingsScreen implements Screen {
 
         // Draw settings board background
         batch.draw(settingsBoardImage,
-            (Gdx.graphics.getWidth() - settingsBoardImage.getWidth()) / 2,
-            (Gdx.graphics.getHeight() - settingsBoardImage.getHeight()) / 2);
+            (float) (Gdx.graphics.getWidth() - settingsBoardImage.getWidth()) / 2,
+            (float) (Gdx.graphics.getHeight() - settingsBoardImage.getHeight()) / 2);
 
         // Settings Back button with hover effect
         handleButton(settingsBackBounds, settingsBackImage, settingsBackHoverImage, () -> game.setScreen(new HomeScreen(game)));
@@ -97,7 +97,7 @@ public class SettingsScreen implements Screen {
         });
 
         // Exit button with hover effect and sound
-        handleButton(exitBounds, exitImage, exitHoverImage, Gdx.app::exit);
+        handleButton(exitBounds, exitImage, exitHoverImage, () -> game.setScreen(new AfterExitScreen(game)));
 
         batch.end();
     }
