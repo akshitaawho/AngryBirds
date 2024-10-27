@@ -1,71 +1,100 @@
 package io.github.akanksha23056.Screen;
 
-import io.github.akanksha23056.Main;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
+import io.github.akanksha23056.Main;
 
 public class HomeScreen implements Screen {
     private final Main game;
     private final SpriteBatch batch;
     private final Texture homeScreenImage;
     private final Texture playButtonImage;
-    private final Texture playButtonHoverImage; // For hover effect
-    private Texture currentButtonImage; // To hold the current button texture
-    private final float buttonX; // X position for the button
-    private final float buttonY; // Y position for the button
-    private final float buttonWidth; // Width of the button
-    private final float buttonHeight; // Height of the button
+    private final Texture playButtonHoverImage;
+    private final Texture settingsButtonImage;
+    private final Texture settingsButtonHoverImage;
+    private final Rectangle playButtonBounds;
+    private final Rectangle settingsButtonBounds;
 
     public HomeScreen(Main game) {
         this.game = game;
         this.batch = game.batch;
         this.homeScreenImage = new Texture("homescreen.jpg");
         this.playButtonImage = new Texture("playbutton.png");
-        this.playButtonHoverImage = new Texture("playbuttonhover.png");
+        this.playButtonHoverImage = new Texture("playbutton.png"); // Ensure this is the correct hover texture
+        this.settingsButtonImage = new Texture("settings.png");
+        this.settingsButtonHoverImage = new Texture("settings_hover.png");
 
-        // Set the button's position and size (adjust as needed)
-        this.buttonX = 100; // Example X position
-        this.buttonY = 50; // Example Y position
-        this.buttonWidth = 200; // Example button width
-        this.buttonHeight = 100; // Example button height
+        // Play button configuration
+        float playButtonWidth = 300.0F;
+        float playButtonHeight = 150.0F;
+        float playButtonX = (Gdx.graphics.getWidth() - playButtonWidth) / 2.0F;
+        float playButtonY = Gdx.graphics.getHeight() / 2.0F - 90;
+        this.playButtonBounds = new Rectangle(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
 
-        currentButtonImage = playButtonImage; // Start with the normal button image
-    }
-
-    @Override
-    public void show() {
+        // Settings button configuration (positioned in the extreme bottom-left corner)
+        float settingsButtonWidth = 200.0F;
+        float settingsButtonHeight = 200.0F;
+        float settingsButtonX = 0.0F;  // Exact left edge
+        float settingsButtonY = 0.0F;  // Exact bottom edge
+        this.settingsButtonBounds = new Rectangle(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
     }
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
+        ScreenUtils.clear(0.15F, 0.15F, 0.2F, 1.0F);
+
         batch.begin();
-        batch.draw(homeScreenImage, 0, 0);
-        batch.draw(currentButtonImage, buttonX, buttonY, buttonWidth, buttonHeight); // Draw the current button image
+        // Draw background image
+        batch.draw(homeScreenImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        // Play button with hover effect
+        drawPlayButton();
+        // Settings button with hover effect
+        drawSettingsButton();
+
         batch.end();
+    }
 
-        // Check for mouse position
-        float mouseX = Gdx.input.getX();
-        float mouseY = Gdx.graphics.getHeight() - Gdx.input.getY(); // Flip Y coordinate
-
-        // Check if the mouse is over the button
-        boolean isHovering = mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
-            mouseY >= buttonY && mouseY <= buttonY + buttonHeight;
-
-        // Change button image on hover
-        if (isHovering) {
-            currentButtonImage = playButtonHoverImage; // Set to hover image
+    private void drawPlayButton() {
+        if (playButtonBounds.contains(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY())) {
+            batch.draw(playButtonHoverImage, playButtonBounds.x - 5, playButtonBounds.y - 5, playButtonBounds.width + 20, playButtonBounds.height + 20);
+            if (Gdx.input.isTouched()) {
+                game.playButtonClickSound(); // Play button click sound
+                game.backgroundMusic.stop(); // Stop the music when navigating to the next screen
+                game.setScreen(new LevelsScreen(game)); // Transition to LevelsScreen
+            }
         } else {
-            currentButtonImage = playButtonImage; // Set to normal image
+            batch.draw(playButtonImage, playButtonBounds.x, playButtonBounds.y, playButtonBounds.width, playButtonBounds.height);
         }
+    }
 
-        // Check for button click
-        if (Gdx.input.isTouched() && isHovering) {
-            game.setScreen(new LevelsScreen(game)); // Redirect to LevelsScreen on click
+    private void drawSettingsButton() {
+        if (settingsButtonBounds.contains(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY())) {
+            batch.draw(settingsButtonHoverImage, settingsButtonBounds.x - 5, settingsButtonBounds.y - 5, settingsButtonBounds.width + 10, settingsButtonBounds.height + 10);
+            if (Gdx.input.isTouched()) {
+                game.playButtonClickSound(); // Play button click sound
+                game.setScreen(new SettingsScreen(game)); // Transition to SettingsScreen
+            }
+        } else {
+            batch.draw(settingsButtonImage, settingsButtonBounds.x, settingsButtonBounds.y, settingsButtonBounds.width, settingsButtonBounds.height);
         }
+    }
+
+    @Override
+    public void dispose() {
+        homeScreenImage.dispose();
+        playButtonImage.dispose();
+        playButtonHoverImage.dispose();
+        settingsButtonImage.dispose();
+        settingsButtonHoverImage.dispose();
+    }
+
+    @Override
+    public void show() {
     }
 
     @Override
@@ -82,12 +111,5 @@ public class HomeScreen implements Screen {
 
     @Override
     public void hide() {
-    }
-
-    @Override
-    public void dispose() {
-        homeScreenImage.dispose();
-        playButtonImage.dispose(); // Dispose the normal button texture
-        playButtonHoverImage.dispose(); // Dispose the hover button texture
     }
 }
