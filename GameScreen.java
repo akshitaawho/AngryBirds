@@ -1,59 +1,57 @@
-// File: GameScreen.java
+
 package io.github.akanksha23056.Screen;
-import io.github.akanksha23056.Main;
-import com.badlogic.gdx.Game;
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import io.github.akanksha23056.Main;
 
 public class GameScreen implements Screen {
-    private final Main game;  // Cast as Main to access batch
+    private final Main game;
     private final SpriteBatch batch;
     private final Texture gameScreenImage;
-    private float elapsedTime = 0;
+    private final float screenWidth;
+    private final float screenHeight;
+    private float elapsedTime = 0.0F;
 
     public GameScreen(Main game) {
         this.game = game;
-        this.batch = ((Main) game).batch; // Access batch from Main
+        this.batch = game.batch;
         this.gameScreenImage = new Texture("gamescreen.jpg");
+        this.screenWidth = (float)Gdx.graphics.getWidth();
+        this.screenHeight = (float)Gdx.graphics.getHeight();
     }
 
-    @Override
     public void show() {
     }
 
-    @Override
     public void render(float delta) {
-        elapsedTime += delta; // Track how much time has passed
-        if (elapsedTime > 4) {
-            game.setScreen(new HomeScreen(game)); // After 5 seconds, switch to HomeScreen
+        this.elapsedTime += delta;
+        if (this.elapsedTime > 3.0F) {
+            this.game.setScreen(new HomeScreen(this.game));
         }
 
-        ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
-        batch.begin();
-        batch.draw(gameScreenImage, 0, 0);
-        batch.end();
+        ScreenUtils.clear(0.15F, 0.15F, 0.2F, 1.0F);
+        this.batch.begin();
+        this.batch.draw(this.gameScreenImage, 0.0F, 0.0F, this.screenWidth, this.screenHeight);
+        this.batch.end();
     }
 
-    @Override
     public void resize(int width, int height) {
     }
 
-    @Override
     public void pause() {
     }
 
-    @Override
     public void resume() {
     }
 
-    @Override
     public void hide() {
     }
 
-    @Override
     public void dispose() {
-        gameScreenImage.dispose();
+        this.gameScreenImage.dispose();
     }
 }
