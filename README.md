@@ -1,6 +1,6 @@
 # ANGRY BIRDS
 ## Overview
-Welcome to the Angry Birds-style game! This project is built using the LibGDX framework, providing an engaging and entertaining experience reminiscent of the classic game. Players can launch different types of birds to defeat various pigs across multiple levels. The game features vibrant graphics, sound effects, and smooth gameplay mechanics.
+Welcome to the Angry Birds game! This project is built using the LibGDX framework, providing an engaging and entertaining experience reminiscent of the classic game. Players can launch different types of birds to defeat various pigs across multiple levels. The game features vibrant graphics, sound effects, and smooth gameplay mechanics.
 
 ## Features
 - **Multiple Bird Types**: Play with different birds (Red, Chuck, and Terrence), each with unique abilities.
